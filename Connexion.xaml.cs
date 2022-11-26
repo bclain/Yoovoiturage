@@ -26,5 +26,31 @@ namespace ProjetFinal
         {
             this.InitializeComponent();
         }
+
+        private void btnCon_Click(object sender, RoutedEventArgs e)
+        {
+            btnIns.Style = (Style)this.Resources["ButtonNactive"];
+            btnCon.Style = (Style)this.Resources["ButtonActive"];
+            in1.Visibility = Visibility.Collapsed;
+            in2.Visibility = Visibility.Collapsed;
+            btnCreer.Visibility = Visibility.Collapsed;
+            btnConn.Visibility = Visibility.Visible;
+
+        }
+
+        private void btnIns_Click(object sender, RoutedEventArgs e)
+        {
+            btnCon.Style = (Style)this.Resources["ButtonNactive"];
+            btnIns.Style = (Style)this.Resources["ButtonActive"];
+            in1.Visibility = Visibility.Visible;
+            in2.Visibility = Visibility.Visible;
+            btnCreer.Visibility = Visibility.Visible;
+            btnConn.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnRetour_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Trajets));
+        }
     }
 }

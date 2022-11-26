@@ -12,12 +12,12 @@
             <Setter Property="FontFamily" Value="Segoe UI"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Margin" Value="10"/>
-            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="CornerRadius" Value="10"/>
             <Setter Property="Padding" Value="20 10"/>
             <Setter Property="Background" Value="#FFCA7B"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="BorderThickness" Value="4"/>
+            <Setter Property="BorderThickness" Value="2 2 6 6"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -28,6 +28,9 @@
                                     </VisualState>
                                     <VisualState x:Name="PointerOver">
                                         <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderThickness">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="2"/>
+                                            </ObjectAnimationUsingKeyFrames>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
                                                 <DiscreteObjectKeyFrame KeyTime="0" Value="white"/>
                                             </ObjectAnimationUsingKeyFrames>
@@ -69,6 +72,10 @@
     </Page.Resources>
 
     <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="56*"/>
+            <ColumnDefinition Width="69*"/>
+        </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions >
             <RowDefinition Height="2*"/>
@@ -78,26 +85,52 @@
 
 
 
-        <Grid >
-            <StackPanel Orientation="Horizontal"   >
-                <DatePicker VerticalAlignment="Center" x:Name="DebutDatePicker" CornerRadius="10"  Header="Le" Width="300px"   Margin="20 0 0 0" />
-                <ComboBox VerticalAlignment="Center" Header="Départ"  Margin="20 0 0 0" Width="200">
-                    <x:String>Toutes</x:String>
-                    <x:String>Shawinigan</x:String>
-                    <x:String>Trois Rivières</x:String>
-                    <x:String>LouiseVille</x:String>
-                    <x:String>Yellow</x:String>
-                </ComboBox>
-                <ComboBox VerticalAlignment="Center" Header="Arrivée" Margin="20 0 0 0" Width="200">
-                    <x:String>Toutes</x:String>
-                    <x:String>Trois Rivières</x:String>
-                    <x:String>LouiseVille</x:String>
-                    <x:String>Yellow</x:String>
-                </ComboBox>
-            </StackPanel>
-            <Button FontWeight="Bold"  HorizontalAlignment="Right" Content="Inscription/Connexion" x:Name="btnTrajets" Margin="0 0 20 0"  Style="{StaticResource ButtonNormal}"/>
+        <Grid Grid.ColumnSpan="2" >
+            <StackPanel Orientation="Horizontal"   />
+            <Button FontWeight="Bold"  HorizontalAlignment="Right" Content="Inscription/Connexion" x:Name="btnTrajets" Margin="0 0 20 0"  Style="{StaticResource ButtonNormal}" Click="btnTrajets_Click"/>
 
         </Grid>
+
+        <ListView x:Name="lvPlaces" Grid.Row="1" Grid.Column="1" Padding="10" Margin="68,20,0,20" Visibility="Collapsed"
+                  HorizontalAlignment="Left">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:Places">
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="1"  Margin="20" Background="White" Padding="20 " Width="700">
+                        <TextBlock Text="{x:Bind Id}" HorizontalAlignment="Left" Margin="45,5,5,10" Foreground="Gray"  FontSize="40"/>
+                        <TextBlock Text="{x:Bind Date }" HorizontalAlignment="Left" Margin="45,5,5,10" Foreground="Gray" FontSize="40"/>
+                    </StackPanel>
+
+
+
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Padding="30" Background="#BFF6FF" CornerRadius="30 30 0 0 " BorderBrush="Black" BorderThickness="2" Grid.ColumnSpan="2" Margin="0,166,0,0" Grid.RowSpan="2">
+
+            <Grid Background="White" CornerRadius="20" Height="170px" BorderBrush="Black" BorderThickness="2 2 5 5 ">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Padding="30 0 30 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid  HorizontalAlignment="Stretch" BorderBrush="#C4D8D1" BorderThickness="0 0 0 2">
+                        <TextBlock Text="01/10/2001"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
+                        <TextBlock Text="Brice Clain"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
+                        <TextBlock Text="15$"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+
+        </StackPanel>
 
     </Grid>
 </Page>

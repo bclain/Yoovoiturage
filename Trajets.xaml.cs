@@ -25,6 +25,13 @@ namespace ProjetFinal
         public Trajets()
         {
             this.InitializeComponent();
+
+            lvPlaces.ItemsSource = MainPage.listePlaces;
+        }
+
+        private void btnTrajets_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Connexion));
         }
     }
 }

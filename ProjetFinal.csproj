@@ -128,12 +128,11 @@
     <Compile Include="Connexion.xaml.cs">
       <DependentUpon>Connexion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Inscription.xaml.cs">
-      <DependentUpon>Inscription.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="GestionBD.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Places.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Trajets.xaml.cs">
       <DependentUpon>Trajets.xaml</DependentUpon>
@@ -174,10 +173,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Inscription.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -190,6 +185,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
+    </PackageReference>
+    <PackageReference Include="MySql.Data">
+      <Version>8.0.31</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.SfInput.UWP">
       <Version>20.3.0.57</Version>

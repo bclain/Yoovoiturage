@@ -22,15 +22,20 @@ namespace ProjetFinal
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        internal static List<Places> listePlaces;
         public MainPage()
         {
+            GestionBD.getInstance().GetPlaces();
             this.InitializeComponent();
             mainFrame.Navigate(typeof(Trajets));
+            listePlaces = new List<Places>();
+            Places p = new Places( 1, "YOO", "YOO", "YOO", "YOO", "YOO", "YOO", "YOO", "YOO", 1, "YOO");
+            listePlaces.Add(p);
         }
 
         private void Button_Click_trajets(object sender, RoutedEventArgs e)
         {
-
+            GestionBD.getInstance().GetPlaces();
             btnCompte.Style = (Style)this.Resources["ButtonMenNonActive"];
             btnTrajets.Style = (Style)this.Resources["ButtonMenActive"];
             this.mainFrame.Navigate(typeof(Trajets));
