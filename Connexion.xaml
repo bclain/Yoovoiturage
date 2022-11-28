@@ -75,11 +75,10 @@
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Margin" Value="10"/>
             <Setter Property="CornerRadius" Value="10"/>
-            <Setter Property="Padding" Value="20 10"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="2 2 2 2"/>
+            <Setter Property="BorderThickness" Value="0 0 0 2"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -90,12 +89,6 @@
                                     </VisualState>
                                     <VisualState x:Name="PointerOver">
                                         <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderThickness">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="2"/>
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="white"/>
-                                            </ObjectAnimationUsingKeyFrames>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
                                                 <DiscreteObjectKeyFrame KeyTime="0" Value="black"/>
                                             </ObjectAnimationUsingKeyFrames>
@@ -389,7 +382,7 @@
 
 
             <Button FontWeight="Bold"  HorizontalAlignment="Center" Content="Créer un compte" x:Name="btnCreer" Margin="80" FontSize="30"  Style="{StaticResource ButtonNormal}"/>
-            <Button FontWeight="Bold"  HorizontalAlignment="Center" Content="Connexion" x:Name="btnConn" Margin="80 "  FontSize="30" Style="{StaticResource ButtonNormal}"/>
+            <Button FontWeight="Bold"  HorizontalAlignment="Center" Content="Connexion" x:Name="btnConn" Margin="80 " Visibility="Collapsed"  FontSize="30" Style="{StaticResource ButtonNormal}"/>
 
 
 

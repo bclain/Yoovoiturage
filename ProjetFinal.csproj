@@ -144,6 +144,8 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\f3.png" />
+    <Content Include="img\fleche.png" />
     <Content Include="img\logo.png" />
     <Content Include="img\trajets.png" />
     <Content Include="img\user.png" />
@@ -185,6 +187,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.UI.Xaml">
+      <Version>2.8.1</Version>
     </PackageReference>
     <PackageReference Include="MySql.Data">
       <Version>8.0.31</Version>

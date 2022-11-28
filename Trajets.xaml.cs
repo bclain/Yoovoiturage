@@ -26,7 +26,7 @@ namespace ProjetFinal
         {
             this.InitializeComponent();
 
-            lvPlaces.ItemsSource = MainPage.listePlaces;
+            lvPlaces.ItemsSource = GestionBD.getInstance().GetPlaces();
         }
 
         private void btnTrajets_Click(object sender, RoutedEventArgs e)

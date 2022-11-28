@@ -46,6 +46,7 @@ namespace ProjetFinal
             btnTrajets.Style = (Style)this.Resources["ButtonMenNonActive"];
             btnCompte.Style = (Style)this.Resources["ButtonMenActive"];
             this.mainFrame.Navigate(typeof(Compte));
+
         }
     }
 }

@@ -41,13 +41,13 @@ namespace ProjetFinal
                 Places p = new Places(
                     r.GetInt32("id"),
                     r.GetString("date"),
-                    r.GetString("date"),
-                    r.GetString("date"),
-                    r.GetString("date"),
-                    r.GetString("date"),
-                    r.GetString("date"),
-                    r.GetString("date"),
-                    r.GetString("date"),
+                    r.GetString("typeVoiture"),
+                    r.GetString("nom_chauffeur"),
+                    r.GetString("heure_d"),
+                    r.GetString("arretd"),
+                    r.GetString("typePlace"),
+                    r.GetString("heure_a"),
+                    r.GetString("arreta"),
                     r.GetInt32("nbPlaces"),
                     r.GetString("statut")
                 );
