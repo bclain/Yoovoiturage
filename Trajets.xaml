@@ -71,6 +71,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
     </Page.Resources>
 
     <Grid >
@@ -91,7 +92,9 @@
 
         <ListView x:Name="lvPlaces" Padding="30" Background="#BFF6FF" CornerRadius="30 30 0 0 " BorderBrush="Black" BorderThickness="2" Grid.Row="2" Margin="-40,0,0,0" Grid.RowSpan="2"
                   HorizontalAlignment="Stretch">
+            
             <ListView.ItemTemplate>
+                
                 <DataTemplate x:DataType="local:Places">
 
                     <Grid Background="White" CornerRadius="20" Height="170px" BorderBrush="Black" Margin="10" BorderThickness="2 2 5 5 ">
@@ -115,26 +118,26 @@
                                     <ColumnDefinition Width=".4*"/>
                                     <ColumnDefinition Width=".3*"/>
                                     <ColumnDefinition Width=".7*"/>
-                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width=".7*"/>
                                     <ColumnDefinition Width=".5*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{x:Bind TypeVoiture }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
+                                <TextBlock Grid.Column="0" Text="{x:Bind TypeVoiture }" x:Name="typeVoiture"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
                                 <StackPanel Grid.Column="1"  VerticalAlignment="Center">
                                     <TextBlock Grid.Column="1" Text="{x:Bind NbPlaces }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
                                     <TextBlock Grid.Column="1" Text="places"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="SemiBold" Foreground="Black"/>
                                 </StackPanel>
                                 <StackPanel Grid.Column="2"  VerticalAlignment="Center">
-                                    <TextBlock  Text="15h30"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
-                                    <TextBlock Text="Trois-Rivières"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
+                                    <TextBlock  Text="15h30"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
+                                    <TextBlock Text="Trois-Rivières"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
                                 </StackPanel>
                                 <StackPanel Grid.Column="3"  VerticalAlignment="Center">
                                     <TextBlock Text="16h00"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
-                                    <Image Width="200"  Source="img/f3.png"/>
+                                    <Image   Source="img/f3.png" Margin="20 0 20 0"/>
                                     <TextBlock Text="Louiseville"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
                                 </StackPanel >
                                 <StackPanel Grid.Column="4"  VerticalAlignment="Center">
-                                    <TextBlock  Text="16h30"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
-                                    <TextBlock  Text="Shawinigan"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
+                                    <TextBlock  Text="16h30"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
+                                    <TextBlock  Text="Shawinigan"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
                                 </StackPanel>
                             </Grid>
 

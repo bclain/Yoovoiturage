@@ -122,6 +122,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Client.cs" />
     <Compile Include="Compte.xaml.cs">
       <DependentUpon>Compte.xaml</DependentUpon>
     </Compile>

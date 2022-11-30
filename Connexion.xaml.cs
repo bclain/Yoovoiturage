@@ -52,5 +52,10 @@ namespace ProjetFinal
         {
             Frame.Navigate(typeof(Trajets));
         }
+
+        private void btnConn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

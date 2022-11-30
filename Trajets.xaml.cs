@@ -27,11 +27,16 @@ namespace ProjetFinal
             this.InitializeComponent();
 
             lvPlaces.ItemsSource = GestionBD.getInstance().GetPlaces();
+
+
         }
 
         private void btnTrajets_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Connexion));
         }
-    }
+
+
+
+}
 }

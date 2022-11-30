@@ -12,10 +12,20 @@ namespace ProjetFinal
     {
         MySqlConnection con;
         static GestionBD gestionBD = null;
+        int id;
+        String typeClient;
+        Boolean connect;
+
+        public int Id { get => id; set => id = value; }
+        public string TypeClient { get => typeClient; set => typeClient = value; }
+        public bool Connect { get => connect; set => connect = value; }
 
         public GestionBD()
         {
-            this.con = new MySqlConnection("Server=cours.cegep3r.info;Database=1920518-brice-jérôme-clain;Uid=1920518;Pwd=1920518;"); ;
+            this.con = new MySqlConnection("Server=cours.cegep3r.info;Database=1920518-brice-jérôme-clain;Uid=1920518;Pwd=1920518;");
+            id = -1;
+            typeClient = "";
+            connect = false;
         }
 
         public static GestionBD getInstance()
@@ -60,6 +70,29 @@ namespace ProjetFinal
 
             return liste;
         }
+
+        public void connClient(String email, String mdp)
+        {
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.CommandText = "insert into clients values(@email, @mdp) ";
+
+            commande.Parameters.AddWithValue("@email", email);
+            commande.Parameters.AddWithValue("@mdp", mdp);
+
+            MySqlDataReader r = commande.ExecuteReader();
+
+            if (r.GetInt32("res") != 0)
+            {
+                id = r.GetInt32("res");
+                typeClient = r.GetString("type") ;
+                connect = true;
+            }
+
+
+        }
+
 
 
     }

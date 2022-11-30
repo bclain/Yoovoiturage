@@ -382,7 +382,7 @@
 
 
             <Button FontWeight="Bold"  HorizontalAlignment="Center" Content="Créer un compte" x:Name="btnCreer" Margin="80" FontSize="30"  Style="{StaticResource ButtonNormal}"/>
-            <Button FontWeight="Bold"  HorizontalAlignment="Center" Content="Connexion" x:Name="btnConn" Margin="80 " Visibility="Collapsed"  FontSize="30" Style="{StaticResource ButtonNormal}"/>
+            <Button FontWeight="Bold"  HorizontalAlignment="Center" Content="Connexion" x:Name="btnConn" Margin="80 " Visibility="Collapsed"  FontSize="30" Style="{StaticResource ButtonNormal}" Click="btnConn_Click"/>
 
 
 
