@@ -12,9 +12,10 @@ namespace ProjetFinal
     {
         MySqlConnection con;
         static GestionBD gestionBD = null;
-        int id;
-        String typeClient;
+        int id = 4;
+        String typeClient = "555";
         Boolean connect;
+
 
         public int Id { get => id; set => id = value; }
         public string TypeClient { get => typeClient; set => typeClient = value; }
@@ -23,8 +24,8 @@ namespace ProjetFinal
         public GestionBD()
         {
             this.con = new MySqlConnection("Server=cours.cegep3r.info;Database=1920518-brice-jérôme-clain;Uid=1920518;Pwd=1920518;");
-            id = -1;
-            typeClient = "";
+            id = 3;
+            typeClient = "555";
             connect = false;
         }
 
@@ -76,22 +77,52 @@ namespace ProjetFinal
 
             MySqlCommand commande = new MySqlCommand();
             commande.Connection = con;
-            commande.CommandText = "insert into clients values(@email, @mdp) ";
+            commande.CommandText = "CALL con_client(@email, @mdp) ";
 
             commande.Parameters.AddWithValue("@email", email);
             commande.Parameters.AddWithValue("@mdp", mdp);
 
+            con.Open();
             MySqlDataReader r = commande.ExecuteReader();
+            r.Read();
+            int val = r.GetInt32("res");
 
-            if (r.GetInt32("res") != 0)
+            if (val != 0)
             {
                 id = r.GetInt32("res");
                 typeClient = r.GetString("type") ;
                 connect = true;
             }
 
-
+            r.Close();
+            con.Close();
         }
+
+        public int ajouterClient(String nom, String adresse, String prenom, String num, String email, String mdp)
+        {
+            int retour = 0;
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.CommandText = "insert into clients (nom, adresse, prenom, num, email, mdp, type) values(@nom, @adresse, @prenom, @num, @email, MD5( @mdp ), 'client') ";
+
+            commande.Parameters.AddWithValue("@nom", nom);
+            commande.Parameters.AddWithValue("@adresse", adresse);
+            commande.Parameters.AddWithValue("@prenom", prenom);
+            commande.Parameters.AddWithValue("@num", num);
+            commande.Parameters.AddWithValue("@email", email);
+            commande.Parameters.AddWithValue("@mdp", mdp);
+
+
+            con.Open();
+            commande.Prepare();
+            retour = commande.ExecuteNonQuery();
+
+            con.Close();
+
+            return retour;
+        }
+
 
 
 

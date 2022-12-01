@@ -14,7 +14,7 @@
             <Setter Property="FontFamily" Value="Segoe UI"/>
             <Setter Property="FontSize" Value="25"/>
             <Setter Property="Margin" Value="10"/>
-            <Setter Property="CornerRadius" Value="30"/>
+            <Setter Property="CornerRadius" Value="10"/>
             <Setter Property="Padding" Value="20 10"/>
             <Setter Property="Background" Value="#A8FF9A"/>
             <Setter Property="Foreground" Value="Black"/>
@@ -76,7 +76,7 @@
             <Setter Property="FontFamily" Value="Segoe UI"/>
             <Setter Property="FontSize" Value="25"/>
             <Setter Property="Margin" Value="10"/>
-            <Setter Property="CornerRadius" Value="30"/>
+            <Setter Property="CornerRadius" Value="10"/>
             <Setter Property="Padding" Value="20 10"/>
             <Setter Property="Background" Value="#F0FFF0"/>
             <Setter Property="Foreground" Value="Black"/>
@@ -178,6 +178,11 @@
                     </Button>
                 </StackPanel>
 
+                <StackPanel x:Name="connected" Grid.Row="2" Orientation="Vertical" Visibility="Collapsed" HorizontalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17"
+                               FontWeight="Normal">Vous êtes connecté !</TextBlock>
+                    <Button FontWeight="Bold"  HorizontalAlignment="Left" Content="Deconnexion" x:Name="btnReserver" FontSize="15" CornerRadius="10"   Style="{StaticResource ButtonMenNonActive}" />
+                 </StackPanel>
 
             </Grid>
 
