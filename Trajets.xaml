@@ -111,7 +111,7 @@
                             <Grid  HorizontalAlignment="Stretch" BorderBrush="#C4D8D1" BorderThickness="0 0 0 2">
                                 <TextBlock Text="{x:Bind Date }"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
                                 <TextBlock Text="{x:Bind Nom_chauffeur }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
-                                <TextBlock Text="{x:Bind Id }"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
+                                <TextBlock Text="{x:Bind Prix }"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
                             </Grid>
                             <Grid  HorizontalAlignment="Stretch" Grid.Row="1" >
                                 <Grid.ColumnDefinitions>
