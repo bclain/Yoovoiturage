@@ -71,7 +71,128 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+        <Style x:Key="ButtonActive" TargetType="Button">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="20 10"/>
+            <Setter Property="Background" Value="#FCD4FF"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="2 2 2 2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" BackgroundSizing="{TemplateBinding BackgroundSizing}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" CornerRadius="{TemplateBinding CornerRadius}" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderThickness">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="2"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FCD4FF"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="black"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="black"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="white"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="white"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="black"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonNactive" TargetType="Button">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="20 10"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="2 2 5 5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" BackgroundSizing="{TemplateBinding BackgroundSizing}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" CornerRadius="{TemplateBinding CornerRadius}" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderThickness">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="2 2 5 5"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FCD4FF"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="black"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="black"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="white"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="white"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="black"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
 
     <Grid >
@@ -87,7 +208,7 @@
 
         <Grid Grid.ColumnSpan="2" >
             <StackPanel Orientation="Horizontal"   />
-            <Button FontWeight="Bold"  HorizontalAlignment="Right" Content="Réservés" x:Name="btnReserves"  Margin="0 0 20 0"  Style="{StaticResource ButtonNormal}" Visibility="Collapsed" Click="btnReserves_Click"/>
+            <Button FontWeight="Bold"  HorizontalAlignment="Right" Content="Réservés" x:Name="btnReserves"  Margin="0 0 20 0"  Style="{StaticResource ButtonNactive}" Visibility="Collapsed" Click="btnReserves_Click"/>
             <Button FontWeight="Bold"  HorizontalAlignment="Right" Content="Inscription/Connexion" x:Name="btnConn" Margin="0 0 20 0"  Style="{StaticResource ButtonNormal}" Click="btnConn_Click"/>
         </Grid>
 
@@ -112,7 +233,7 @@
                             <Grid  HorizontalAlignment="Stretch" BorderBrush="#C4D8D1" BorderThickness="0 0 0 2">
                                 <TextBlock Text="{x:Bind Date }"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
                                 <TextBlock Text="{x:Bind Nom_chauffeur }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
-                                <TextBlock Text="{x:Bind Id}"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
+                                <TextBlock Text="{x:Bind Prix}"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
                             </Grid>
                             <Grid  HorizontalAlignment="Stretch" Grid.Row="1" >
                                 <Grid.ColumnDefinitions>
@@ -124,21 +245,22 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Text="{x:Bind TypeVoiture }" x:Name="typeVoiture"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
                                 <StackPanel Grid.Column="1"  VerticalAlignment="Center">
-                                    <TextBlock Grid.Column="1" Text="{x:Bind NbPlaces }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
+                                    <TextBlock Grid.Column="1" Text="{x:Bind NbPlaces }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
                                     <TextBlock Grid.Column="1" Text="places"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="SemiBold" Foreground="Black"/>
+                                    <TextBlock Grid.Column="1" Text="restantes"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="SemiBold" Foreground="Black"/>
                                 </StackPanel>
                                 <StackPanel Grid.Column="2"  VerticalAlignment="Center">
-                                    <TextBlock  Text="15h30"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
-                                    <TextBlock Text="Trois-Rivières"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
+                                    <TextBlock  Text="{x:Bind Heure_d }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
+                                    <TextBlock Text="{x:Bind Arretd }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
                                 </StackPanel>
                                 <StackPanel Grid.Column="3"  VerticalAlignment="Center">
-                                    <TextBlock Text="16h00"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
-                                    <Image   Source="img/f3.png" Margin="20 0 20 0"/>
-                                    <TextBlock Text="Louiseville"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
+                                    <TextBlock Text="{x:Bind Heure_o }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
+                                    <Image   Source="{x:Bind TypePlace }" Margin="20 0 20 0"/>
+                                    <TextBlock Text="{x:Bind Arreto }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
                                 </StackPanel >
                                 <StackPanel Grid.Column="4"  VerticalAlignment="Center">
-                                    <TextBlock  Text="16h30"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
-                                    <TextBlock  Text="Shawinigan"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
+                                    <TextBlock  Text="{x:Bind Heure_a }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
+                                    <TextBlock  Text="{x:Bind Arreta }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
                                 </StackPanel>
                             </Grid>
 
@@ -159,6 +281,88 @@
                                    LargeChange="100"/>
                                 <Button FontWeight="Bold" Tag="{ Binding Text, ElementName=BeginNumberBox}" CommandParameter="{x:Bind Id }"
                                     HorizontalAlignment="Left"  x:Name="btnReserver" Content="Réserver"  Margin="20"  Style="{StaticResource ButtonNormal}" Click="btnAjout_Click"/>
+
+                            </StackPanel>
+
+                        </Grid>
+                    </Grid>
+
+
+
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView x:Name="lvPlacesClient" Padding="30" Visibility="Collapsed" Background="#BFF6FF" CornerRadius="30 30 0 0 " BorderBrush="Black" BorderThickness="2" Grid.Row="2" Margin="-40,0,0,0" Grid.RowSpan="2"
+                  HorizontalAlignment="Stretch">
+
+            <ListView.ItemTemplate>
+
+                <DataTemplate x:DataType="local:Places">
+
+                    <Grid Background="White" CornerRadius="20" Height="170px" BorderBrush="Black" Margin="10" BorderThickness="2 2 5 5 ">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="1.5*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Padding="30 0 30 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="5*"/>
+                            </Grid.RowDefinitions>
+                            <Grid  HorizontalAlignment="Stretch" BorderBrush="#C4D8D1" BorderThickness="0 0 0 2">
+                                <TextBlock Text="{x:Bind Date }"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
+                                <TextBlock Text="{x:Bind Nom_chauffeur }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
+                                <TextBlock Text="{x:Bind Prix}"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
+                            </Grid>
+                            <Grid  HorizontalAlignment="Stretch" Grid.Row="1" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".4*"/>
+                                    <ColumnDefinition Width=".3*"/>
+                                    <ColumnDefinition Width=".7*"/>
+                                    <ColumnDefinition Width=".7*"/>
+                                    <ColumnDefinition Width=".5*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{x:Bind TypeVoiture }" x:Name="typeVoiture"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
+                                <StackPanel Grid.Column="1"  VerticalAlignment="Center">
+                                    <TextBlock Grid.Column="1" Text="{x:Bind NbPlaces }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
+                                    <TextBlock Grid.Column="1" Text="places"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="SemiBold" Foreground="Black"/>
+                                    <TextBlock Grid.Column="1" Text="restantes"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="SemiBold" Foreground="Black"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="2"  VerticalAlignment="Center">
+                                    <TextBlock  Text="{x:Bind Heure_d }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
+                                    <TextBlock Text="{x:Bind Arretd }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="3"  VerticalAlignment="Center">
+                                    <TextBlock Text="{x:Bind Heure_o }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
+                                    <Image   Source="{x:Bind TypePlace }" Margin="20 0 20 0"/>
+                                    <TextBlock Text="{x:Bind Arreto }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
+                                </StackPanel >
+                                <StackPanel Grid.Column="4"  VerticalAlignment="Center">
+                                    <TextBlock  Text="{x:Bind Heure_a }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
+                                    <TextBlock  Text="{x:Bind Arreta }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
+                                </StackPanel>
+                            </Grid>
+
+                        </Grid>
+
+                        <Grid Grid.Column="1" BorderBrush="Black" BorderThickness="2 0 0 0 " Background="#FCD4FF" >
+
+                            <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+
+                                <controls:NumberBox x:Name="BeginNumberBox" Width="100px"   BorderBrush="Black" BorderThickness="2"
+                                   Header="Nb places:" 
+                                   Value="{x:Bind NbPlacesr }" 
+                                   Minimum="0"
+                                   Maximum="{x:Bind NbPlacesm }"
+                                   FontSize="20"
+                                   SpinButtonPlacementMode="Compact" 
+                                   SmallChange="1"
+                                   LargeChange="100"/>
+                                <Button FontWeight="Bold" Tag="{ Binding Text, ElementName=BeginNumberBox}" CommandParameter="{x:Bind Id }"
+                                    HorizontalAlignment="Left"  x:Name="btnReserver" Content="Modifier"  Margin="20"  Style="{StaticResource ButtonNormal}" Click="btnModif_Click"/>
 
                             </StackPanel>
 

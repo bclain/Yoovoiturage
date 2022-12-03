@@ -27,6 +27,7 @@ namespace ProjetFinal
             this.InitializeComponent();
 
             lvPlaces.ItemsSource = GestionBD.getInstance().GetPlaces();
+            lvPlacesClient.ItemsSource = GestionBD.getInstance().PlaceClient();
 
             Boolean connect = GestionBD.getInstance().Connect;
             if (connect == true)
@@ -48,7 +49,21 @@ namespace ProjetFinal
 
         private void btnReserves_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Connexion));
+            
+            if(lvPlacesClient.Visibility == Visibility.Collapsed)
+            {
+              lvPlacesClient.Visibility = Visibility.Visible;
+              lvPlaces.Visibility = Visibility.Collapsed;
+                
+                btnReserves.Style = (Style)this.Resources["ButtonActive"];
+            }
+            else if(lvPlacesClient.Visibility == Visibility.Visible)
+            {
+                btnReserves.Style = (Style)this.Resources["ButtonNactive"];
+                lvPlacesClient.Visibility = Visibility.Collapsed;
+                lvPlaces.Visibility = Visibility.Visible;
+            }
+            
         }
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)
@@ -60,7 +75,28 @@ namespace ProjetFinal
                 string nb_place = ((Button)sender).Tag.ToString();
                 string id_place = ((Button)sender).CommandParameter.ToString();
                 GestionBD.getInstance().ajouterPlaces(id_place, nb_place);
-                Frame.Navigate(typeof(Trajets));
+                lvPlaces.ItemsSource = GestionBD.getInstance().GetPlaces();
+                lvPlacesClient.ItemsSource = GestionBD.getInstance().PlaceClient();
+            }
+            else
+            {
+                Frame.Navigate(typeof(Connexion));
+            }
+
+
+        }
+
+        private void btnModif_Click(object sender, RoutedEventArgs e)
+        {
+            Boolean connect = GestionBD.getInstance().Connect;
+            if (connect == true)
+            {
+                var button = sender as Button;
+                string nb_place = ((Button)sender).Tag.ToString();
+                string id_place = ((Button)sender).CommandParameter.ToString();
+                GestionBD.getInstance().modifPlaces(id_place, nb_place);
+                lvPlacesClient.ItemsSource = GestionBD.getInstance().PlaceClient();
+                lvPlaces.ItemsSource = GestionBD.getInstance().GetPlaces();
             }
             else
             {
@@ -72,5 +108,5 @@ namespace ProjetFinal
 
 
 
-}
+    }
 }

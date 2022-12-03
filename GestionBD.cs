@@ -57,9 +57,12 @@ namespace ProjetFinal
                     r.GetString("heure_d"),
                     r.GetString("arretd"),
                     r.GetString("typePlace"),
+                    r.GetString("heure_o"),
+                    r.GetString("arreto"),
                     r.GetString("heure_a"),
                     r.GetString("arreta"),
-                    r.GetInt32("nbPlaces"),
+                    r.GetInt32("nbreserve"),
+                    r.GetInt32("nbdispo"),
                     r.GetString("statut")
                 );
 
@@ -130,6 +133,68 @@ namespace ProjetFinal
             MySqlCommand commande = new MySqlCommand();
             commande.Connection = con;
             commande.CommandText = "CALL set_places( @id_client, @id_place,@nb_place);";
+
+            commande.Parameters.AddWithValue("@id_client", id_actuel);
+            commande.Parameters.AddWithValue("@id_place", id_place);
+            commande.Parameters.AddWithValue("@nb_place", nb_place);
+
+
+            con.Open();
+            commande.Prepare();
+            retour = commande.ExecuteNonQuery();
+
+            con.Close();
+
+            return retour;
+        }
+
+        public ObservableCollection<Places> PlaceClient()
+        {
+            ObservableCollection<Places> liste = new ObservableCollection<Places>();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.CommandText = "CALL places_client( @id_client);";
+
+            commande.Parameters.AddWithValue("@id_client", id_actuel);
+
+
+            con.Open();
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+                Places p = new Places(
+                    r.GetInt32("id"),
+                    r.GetString("date"),
+                    r.GetString("typeVoiture"),
+                    r.GetString("nom_chauffeur"),
+                    r.GetString("heure_d"),
+                    r.GetString("arretd"),
+                    r.GetString("typePlace"),
+                    r.GetString("heure_o"),
+                    r.GetString("arreto"),
+                    r.GetString("heure_a"),
+                    r.GetString("arreta"),
+                    r.GetInt32("nbreserve"),
+                    r.GetInt32("nbdispo"),
+                    r.GetString("statut")
+                );
+
+                liste.Add(p);
+            }
+            r.Close();
+            con.Close();
+
+            return liste;
+        }
+
+        public int modifPlaces(String id_place, String nb_place)
+        {
+            int retour = 0;
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.CommandText = "CALL remove_places( @id_client, @id_place,@nb_place);";
 
             commande.Parameters.AddWithValue("@id_client", id_actuel);
             commande.Parameters.AddWithValue("@id_place", id_place);

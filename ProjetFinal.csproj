@@ -145,9 +145,10 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="img\f3.png" />
-    <Content Include="img\fleche.png" />
+    <Content Include="img\debut.png" />
+    <Content Include="img\fin.png" />
     <Content Include="img\logo.png" />
+    <Content Include="img\tout.png" />
     <Content Include="img\trajets.png" />
     <Content Include="img\user.png" />
     <Content Include="Properties\Default.rd.xml" />
