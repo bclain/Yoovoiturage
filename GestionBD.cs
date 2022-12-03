@@ -12,19 +12,19 @@ namespace ProjetFinal
     {
         MySqlConnection con;
         static GestionBD gestionBD = null;
-        int id = 4;
+        int id_actuel = 0;
         String typeClient = "555";
         Boolean connect;
 
 
-        public int Id { get => id; set => id = value; }
+        public int Id_actuel { get => id_actuel; set => id_actuel = value; }
         public string TypeClient { get => typeClient; set => typeClient = value; }
         public bool Connect { get => connect; set => connect = value; }
 
         public GestionBD()
         {
             this.con = new MySqlConnection("Server=cours.cegep3r.info;Database=1920518-brice-jérôme-clain;Uid=1920518;Pwd=1920518;");
-            id = 3;
+            id_actuel = 0;
             typeClient = "555";
             connect = false;
         }
@@ -89,7 +89,7 @@ namespace ProjetFinal
 
             if (val != 0)
             {
-                id = r.GetInt32("res");
+                id_actuel = r.GetInt32("res");
                 typeClient = r.GetString("type") ;
                 connect = true;
             }
@@ -123,7 +123,27 @@ namespace ProjetFinal
             return retour;
         }
 
+        public int ajouterPlaces(String id_place, String nb_place)
+        {
+            int retour = 0;
 
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.CommandText = "CALL set_places( @id_client, @id_place,@nb_place);";
+
+            commande.Parameters.AddWithValue("@id_client", id_actuel);
+            commande.Parameters.AddWithValue("@id_place", id_place);
+            commande.Parameters.AddWithValue("@nb_place", nb_place);
+
+
+            con.Open();
+            commande.Prepare();
+            retour = commande.ExecuteNonQuery();
+
+            con.Close();
+
+            return retour;
+        }
 
 
     }

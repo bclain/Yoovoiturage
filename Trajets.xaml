@@ -87,7 +87,8 @@
 
         <Grid Grid.ColumnSpan="2" >
             <StackPanel Orientation="Horizontal"   />
-            <Button FontWeight="Bold"  HorizontalAlignment="Right" Content="Inscription/Connexion" x:Name="btnTrajets" Margin="0 0 20 0"  Style="{StaticResource ButtonNormal}" Click="btnTrajets_Click"/>
+            <Button FontWeight="Bold"  HorizontalAlignment="Right" Content="Réservés" x:Name="btnReserves"  Margin="0 0 20 0"  Style="{StaticResource ButtonNormal}" Visibility="Collapsed" Click="btnReserves_Click"/>
+            <Button FontWeight="Bold"  HorizontalAlignment="Right" Content="Inscription/Connexion" x:Name="btnConn" Margin="0 0 20 0"  Style="{StaticResource ButtonNormal}" Click="btnConn_Click"/>
         </Grid>
 
         <ListView x:Name="lvPlaces" Padding="30" Background="#BFF6FF" CornerRadius="30 30 0 0 " BorderBrush="Black" BorderThickness="2" Grid.Row="2" Margin="-40,0,0,0" Grid.RowSpan="2"
@@ -111,7 +112,7 @@
                             <Grid  HorizontalAlignment="Stretch" BorderBrush="#C4D8D1" BorderThickness="0 0 0 2">
                                 <TextBlock Text="{x:Bind Date }"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
                                 <TextBlock Text="{x:Bind Nom_chauffeur }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
-                                <TextBlock Text="{x:Bind Prix }"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
+                                <TextBlock Text="{x:Bind Id}"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
                             </Grid>
                             <Grid  HorizontalAlignment="Stretch" Grid.Row="1" >
                                 <Grid.ColumnDefinitions>
@@ -155,8 +156,9 @@
                                    FontSize="20"
                                    SpinButtonPlacementMode="Compact" 
                                    SmallChange="1"
-                                   LargeChange="100"/>      
-                                <Button FontWeight="Bold"  HorizontalAlignment="Left" Content="Réserver" x:Name="btnReserver" Margin="20"  Style="{StaticResource ButtonNormal}" Click="btnTrajets_Click"/>
+                                   LargeChange="100"/>
+                                <Button FontWeight="Bold" Tag="{ Binding Text, ElementName=BeginNumberBox}" CommandParameter="{x:Bind Id }"
+                                    HorizontalAlignment="Left"  x:Name="btnReserver" Content="Réserver"  Margin="20"  Style="{StaticResource ButtonNormal}" Click="btnAjout_Click"/>
 
                             </StackPanel>
 
@@ -170,75 +172,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <StackPanel Visibility="Collapsed" Padding="30" Background="#BFF6FF" CornerRadius="30 30 0 0 " BorderBrush="Black" BorderThickness="2" Grid.ColumnSpan="2" Margin="0,166,0,0" Grid.RowSpan="2">
 
-            <Grid Background="White" CornerRadius="20" Height="170px" BorderBrush="Black" BorderThickness="2 2 5 5 ">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="1.5*"/>
-                </Grid.ColumnDefinitions>
-
-                <Grid Padding="30 0 30 0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="5*"/>
-                    </Grid.RowDefinitions>
-                    <Grid  HorizontalAlignment="Stretch" BorderBrush="#C4D8D1" BorderThickness="0 0 0 2">
-                        <TextBlock Text="01/10/2001"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
-                        <TextBlock Text="Brice Clain"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
-                        <TextBlock Text="15$"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
-                    </Grid>
-                    <Grid  HorizontalAlignment="Stretch" Grid.Row="1" BorderBrush="#C4D8D1" BorderThickness="0 0 0 2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width=".4*"/>
-                            <ColumnDefinition Width=".3*"/>
-                            <ColumnDefinition Width=".7*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width=".5*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Berline"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
-                        <StackPanel Grid.Column="1"  VerticalAlignment="Center">
-                            <TextBlock Grid.Column="1" Text="3 "  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
-                            <TextBlock Grid.Column="1" Text="places"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="SemiBold" Foreground="Black"/>
-                        </StackPanel>
-                        <StackPanel Grid.Column="2"  VerticalAlignment="Center">
-                            <TextBlock  Text="15h30"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
-                            <TextBlock Text="Trois-Rivières"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
-                        </StackPanel>
-                        <StackPanel Grid.Column="3"  VerticalAlignment="Center">
-                            <TextBlock Text="16h00"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
-                            <Image Width="200"  Source="img/f3.png"/>
-                            <TextBlock Text="Louiseville"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
-                        </StackPanel >
-                        <StackPanel Grid.Column="4"  VerticalAlignment="Center">
-                            <TextBlock  Text="16h30"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
-                            <TextBlock  Text="Shawinigan"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
-                        </StackPanel>
-                    </Grid>
-
-                </Grid>
-
-                <Grid Grid.Column="1" BorderBrush="Black" BorderThickness="2 0 0 0 " Background="#F0FFF0" >
-                    
-                    <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
-
-                        <controls:NumberBox x:Name="BeginNumberBox" Width="100px"   BorderBrush="Black" BorderThickness="2"
-                   Header="Nb places:" 
-                   Value="1" 
-                   Minimum="0"
-                   Maximum="5"
-                   FontSize="20"
-                   SpinButtonPlacementMode="Compact" 
-                   SmallChange="1"
-                   LargeChange="100"/>
-                        <Button FontWeight="Bold"  HorizontalAlignment="Left" Content="Réserver" x:Name="btnReserver" Margin="20"  Style="{StaticResource ButtonNormal}" Click="btnTrajets_Click"/>
-
-                    </StackPanel>
-
-                </Grid>
-            </Grid>
-
-        </StackPanel>
 
     </Grid>
 </Page>

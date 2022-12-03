@@ -28,12 +28,46 @@ namespace ProjetFinal
 
             lvPlaces.ItemsSource = GestionBD.getInstance().GetPlaces();
 
-
+            Boolean connect = GestionBD.getInstance().Connect;
+            if (connect == true)
+            {
+                btnConn.Visibility = Visibility.Collapsed;
+                btnReserves.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnReserves.Visibility = Visibility.Collapsed;
+                btnConn.Visibility = Visibility.Visible;
+            }
         }
 
-        private void btnTrajets_Click(object sender, RoutedEventArgs e)
+        private void btnConn_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Connexion));
+        }
+
+        private void btnReserves_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Connexion));
+        }
+
+        private void btnAjout_Click(object sender, RoutedEventArgs e)
+        {
+            Boolean connect = GestionBD.getInstance().Connect;
+            if (connect == true)
+            {
+                var button = sender as Button;
+                string nb_place = ((Button)sender).Tag.ToString();
+                string id_place = ((Button)sender).CommandParameter.ToString();
+                GestionBD.getInstance().ajouterPlaces(id_place, nb_place);
+                Frame.Navigate(typeof(Trajets));
+            }
+            else
+            {
+                Frame.Navigate(typeof(Connexion));
+            }
+
+
         }
 
 
