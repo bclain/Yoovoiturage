@@ -25,6 +25,12 @@ namespace ProjetFinal
         public Compte()
         {
             this.InitializeComponent();
+            lvPlaces.ItemsSource = GestionBD.getInstance().vueChauffeur();
+        }
+
+        private void lvPlaces_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

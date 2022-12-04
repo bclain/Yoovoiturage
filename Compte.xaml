@@ -10,5 +10,110 @@
 
     <Grid>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        
+        <ListView x:Name="lvPlaces" Padding="10"  Background="#BFF6FF" CornerRadius="30 30 0 0 " BorderBrush="Black" BorderThickness="2" Grid.Row="1" Margin="-40,0,0,0" Grid.RowSpan="2"
+                  HorizontalAlignment="Stretch" SelectionChanged="lvPlaces_SelectionChanged">
+
+            <ListView.ItemTemplate>
+
+                <DataTemplate x:DataType="local:Trajet">
+
+                    <Grid BorderBrush="Black" Margin="10" BorderThickness="2 2 5 5 " Padding="30 0 30 0" Background="White" CornerRadius="15">
+                         <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                            <Grid  HorizontalAlignment="Stretch" BorderBrush="#C4D8D1" BorderThickness="0 0 0 2">
+                                <TextBlock Text="{x:Bind Date }"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
+                                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                    <TextBlock Text="{x:Bind Nb_places}"    FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
+                                    <TextBlock Text="Places "   VerticalAlignment="Center" FontSize="15" Margin="5 0 0 0" FontWeight="SemiBold" Foreground="Black"/>
+                                 </StackPanel>
+                                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                    <TextBlock Text="Total: "   VerticalAlignment="Center" FontSize="15" Margin="0 0 5 5" FontWeight="SemiBold" Foreground="Black"/>
+                                    <TextBlock Text="{x:Bind Prix}"   VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="#714400"/>
+                                </StackPanel>
+                            </Grid>
+                        <Grid  HorizontalAlignment="Stretch" Grid.Row="1" BorderBrush="#C4D8D1" BorderThickness="0 0 0 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".4*"/>
+                                    <ColumnDefinition Width=".3*"/>
+                                    <ColumnDefinition Width=".7*"/>
+                                    <ColumnDefinition Width=".7*"/>
+                                    <ColumnDefinition Width=".5*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{x:Bind TypeVoiture }" x:Name="typeVoiture"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="SemiBold" Foreground="Black"/>
+                                <StackPanel Grid.Column="2"  VerticalAlignment="Center">
+                                    <TextBlock  Text="{x:Bind Heure_d }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
+                                    <TextBlock Text="{x:Bind Arretd }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="3"  VerticalAlignment="Center">
+                                    <TextBlock Text="{x:Bind Heure_o }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
+                                    <Image   Source="img/tout.png" Margin="20 0 20 0"/>
+                                    <TextBlock Text="{x:Bind Arreto }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
+                                </StackPanel >
+                                <StackPanel Grid.Column="4"  VerticalAlignment="Center">
+                                    <TextBlock  Text="{x:Bind Heure_a }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
+                                    <TextBlock  Text="{x:Bind Arreta }"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Row="1" BorderBrush="#C4D8D1" BorderThickness="0 2 0 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="5*"  />
+                                </Grid.ColumnDefinitions>
+                                <Image   Source="img/tout.png" Margin="40 10 40 10" />
+                                <TextBlock Grid.Column="1" Text="{x:Bind Tpers }"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Row="2"  Visibility="{x:Bind TypeTrajet }" BorderBrush="#C4D8D1" BorderThickness="0 2 0 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" BorderBrush="#C4D8D1" BorderThickness="0 0 0 2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="5*"  />
+                                </Grid.ColumnDefinitions>
+                                <Image   Source="img/debut.png" Margin="40 10 40 10" />
+                                <TextBlock Grid.Column="1" Text="{x:Bind Dpers }"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
+                            </Grid>
+                            <Grid Grid.Row="1" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="5*"  />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="1"   Source="img/fin.png" Margin="40 10 40 10" />
+                                <TextBlock Grid.Row="1" Grid.Column="1"  Text="{x:Bind Dpers }"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#714400"/>
+                            </Grid>
+                        </Grid>
+
+                    </Grid>
+
+
+
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
     </Grid>
 </Page>

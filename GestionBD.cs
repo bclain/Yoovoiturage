@@ -210,6 +210,66 @@ namespace ProjetFinal
             return retour;
         }
 
+        public ObservableCollection<Trajet> vueChauffeur()
+        {
+            ObservableCollection<Trajet> liste = new ObservableCollection<Trajet>();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.CommandText = "CALL vueChauffeur( @id_chauffeur);";
+            commande.Parameters.AddWithValue("@id_chauffeur", id_actuel);
+
+
+            con.Open();
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+                Trajet p = new Trajet(
+                    r.GetInt32("id"),
+                    r.GetString("date"),
+                    r.GetInt32("nb_places"),
+                    r.GetString("id_chauffeur"),
+                    r.GetInt32("prix"),
+                    r.GetString("type"),
+                    r.GetString("heure_d"),
+                    r.GetString("arretd"),
+                    r.GetString("heure_o"),
+                    r.GetString("arreto"),
+                    r.GetString("heure_a"),
+                    r.GetString("arreta")
+                );
+
+                liste.Add(p);
+            }
+            r.Close();
+            con.Close();
+
+            return liste;
+        }
+
+        public String GetPers(int id_trajet, string type)
+        {
+            MySqlConnection con2 = new MySqlConnection("Server=cours.cegep3r.info;Database=1920518-brice-jérôme-clain;Uid=1920518;Pwd=1920518;");
+            String retour ;
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con2;
+            commande.CommandText = "CALL placeTrajet( @id_trajet, @type_place);";
+
+            commande.Parameters.AddWithValue("@id_trajet", id_trajet);
+            commande.Parameters.AddWithValue("@type_place", type);
+
+
+            con2.Open();
+            MySqlDataReader r = commande.ExecuteReader();
+            r.Read();
+            retour = r.GetString("res");
+
+            con2.Close();
+
+            return retour;
+        }
+
 
     }
 }

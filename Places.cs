@@ -70,7 +70,7 @@ using System.Threading.Tasks;
 
             if (arreto == " ")
             {
-                this.typePlace = "img/debut.png";
+                this.typePlace = "img/direct.png";
             }
         }
 
