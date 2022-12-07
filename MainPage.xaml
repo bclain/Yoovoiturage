@@ -181,7 +181,7 @@
                 <StackPanel x:Name="connected" Grid.Row="2" Orientation="Vertical" Visibility="Collapsed" HorizontalAlignment="Center">
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17"
                                FontWeight="Normal">Vous êtes connecté !</TextBlock>
-                    <Button FontWeight="Bold"  HorizontalAlignment="Left" Content="Deconnexion" x:Name="btnReserver" FontSize="15" CornerRadius="10"   Style="{StaticResource ButtonMenNonActive}" />
+                    <Button FontWeight="Bold"  HorizontalAlignment="Left" Content="Deconnexion" x:Name="btnDeconnexion" FontSize="15" CornerRadius="10"   Style="{StaticResource ButtonMenNonActive}" Click="Button_Click_deconnexion" />
                  </StackPanel>
 
             </Grid>

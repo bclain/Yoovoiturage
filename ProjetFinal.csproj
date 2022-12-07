@@ -119,6 +119,9 @@
     <Compile Include="Admin.xaml.cs">
       <DependentUpon>Admin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ajout.xaml.cs">
+      <DependentUpon>Ajout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\Berline.png" />
     <Content Include="img\debut.png" />
     <Content Include="img\direct.png" />
     <Content Include="img\fin.png" />
@@ -153,6 +157,7 @@
     <Content Include="img\tout.png" />
     <Content Include="img\trajets.png" />
     <Content Include="img\user.png" />
+    <Content Include="img\VUS.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -168,6 +173,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Admin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ajout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -115,6 +115,7 @@ namespace ProjetFinal
                 {
                     Frame.Navigate(typeof(Trajets));
                     MainPage.CheckConn();
+
                 }
                 else
                 {

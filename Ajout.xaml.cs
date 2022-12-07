@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -20,27 +21,28 @@ namespace ProjetFinal
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
-    public sealed partial class Compte : Page
+    public sealed partial class Ajout : Page
     {
-        public Compte()
+        public ObservableCollection<string> Villes { get; set; } = GestionBD.getInstance().GetVilles();
+        public Ajout()
         {
             this.InitializeComponent();
-            lvPlaces.ItemsSource = GestionBD.getInstance().vueChauffeur();
-            nom.Text = GestionBD.getInstance().Nom;
-            total.Text = GestionBD.getInstance().Total.ToString();
-            double taxe = GestionBD.getInstance().Total * 0.20;
-            tax.Text = taxe.ToString();
+            DataContext = this;
 
+            datetr.MinDate = DateTime.Today;
         }
 
-        private void lvPlaces_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void btnRetour_Click(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(Trajets));
         }
 
-        private void btnConn_Click(object sender, RoutedEventArgs e)
+        private void btnCreer_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Ajout));
+            
+            
         }
+
     }
 }

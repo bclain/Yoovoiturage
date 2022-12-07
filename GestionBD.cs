@@ -13,6 +13,8 @@ namespace ProjetFinal
         MySqlConnection con;
         static GestionBD gestionBD = null;
         int id_actuel = 0;
+        String nom = "";
+        double total = 0;
         String typeClient = "555";
         Boolean connect;
 
@@ -20,7 +22,8 @@ namespace ProjetFinal
         public int Id_actuel { get => id_actuel; set => id_actuel = value; }
         public string TypeClient { get => typeClient; set => typeClient = value; }
         public bool Connect { get => connect; set => connect = value; }
-
+        public string Nom { get => nom; set => nom = value; }
+        public double Total { get => total; set => total = value; }
         public GestionBD()
         {
             this.con = new MySqlConnection("Server=cours.cegep3r.info;Database=1920518-brice-jérôme-clain;Uid=1920518;Pwd=1920518;");
@@ -92,13 +95,26 @@ namespace ProjetFinal
 
             if (val != 0)
             {
+                nom = r.GetString("nom");
+                total = r.GetDouble("total");
                 id_actuel = r.GetInt32("res");
                 typeClient = r.GetString("type") ;
                 connect = true;
+
             }
 
             r.Close();
             con.Close();
+        }
+
+        public void deconnClient()
+        {
+                nom = "";
+                total = 0;
+                id_actuel = 0 ;
+                typeClient = "";
+                connect = false;
+
         }
 
         public int ajouterClient(String nom, String adresse, String prenom, String num, String email, String mdp)
@@ -270,6 +286,48 @@ namespace ProjetFinal
             return retour;
         }
 
+        public int GetTotal(int id_trajet)
+        {
+            MySqlConnection con3 = new MySqlConnection("Server=cours.cegep3r.info;Database=1920518-brice-jérôme-clain;Uid=1920518;Pwd=1920518;");
+            int retour;
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con3;
+            commande.CommandText = "CALL TotalTrajet( @id_trajet);";
+
+            commande.Parameters.AddWithValue("@id_trajet", id_trajet);
+
+
+            con3.Open();
+            MySqlDataReader r = commande.ExecuteReader();
+            r.Read();
+            retour = r.GetInt32("total");
+
+            con3.Close();
+
+            return retour;
+        }
+
+        public ObservableCollection<String> GetVilles()
+        {
+            ObservableCollection<String> liste = new ObservableCollection<String>();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.CommandText = "Select * from villes";
+
+            con.Open();
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+                liste.Add(r.GetString("ville"));
+            }
+            r.Close();
+            con.Close();
+
+
+            return liste;
+        }
 
     }
 }

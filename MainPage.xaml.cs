@@ -39,18 +39,40 @@ namespace ProjetFinal
 
         private void Button_Click_compte(object sender, RoutedEventArgs e)
         {
+
             btnTrajets.Style = (Style)this.Resources["ButtonMenNonActive"];
             btnCompte.Style = (Style)this.Resources["ButtonMenActive"];
-            this.mainFrame.Navigate(typeof(Compte));
+            Boolean connect = GestionBD.getInstance().Connect;
+            if (connect == true)
+            {
+                this.mainFrame.Navigate(typeof(Compte));
+            }
+            else
+            {
+                this.mainFrame.Navigate(typeof(Connexion));
+            }
 
+        }
+
+        private void Button_Click_deconnexion(object sender, RoutedEventArgs e)
+        {
+            GestionBD.getInstance().deconnClient();
+            CheckConn();
         }
 
         public void CheckConn()
         {
+            btnCompte.Style = (Style)this.Resources["ButtonMenNonActive"];
+            btnTrajets.Style = (Style)this.Resources["ButtonMenActive"];
             Boolean connect = GestionBD.getInstance().Connect;
             if (connect == true)
             {
                 connected.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                connected.Visibility = Visibility.Collapsed;
+                this.mainFrame.Navigate(typeof(Trajets));
             }
 
         }

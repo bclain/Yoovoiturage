@@ -24,6 +24,7 @@ namespace ProjetFinal
         string tpers;
         string dpers;
         string fpers;
+        string logo;
 
         public Trajet(int id, string date, int nb_places, string id_chauffeur, int prix, string typeVoiture, string heure_d, string arretd, string arreto, string heure_o, string arreta, string heure_a)
         {
@@ -31,7 +32,7 @@ namespace ProjetFinal
             this.date = date;
             this.nb_places = nb_places;
             this.id_chauffeur = id_chauffeur;
-            this.prix = prix;
+            this.prix = GestionBD.getInstance().GetTotal(id);
             this.typeVoiture = typeVoiture;
             this.heure_d = heure_d;
             this.arretd = arretd;
@@ -43,12 +44,15 @@ namespace ProjetFinal
             if (arreto == " ")
             {
                 this.typeTrajet = "Collapsed";
+                this.logo = "img/direct.png";
                 this.tpers = GestionBD.getInstance().GetPers(id, "tout");
                 this.dpers = "";
                 this.fpers = "";
             }
             else
             {
+
+                this.logo = "img/tout.png";
                 this.typeTrajet = "Visible";
                 this.tpers = GestionBD.getInstance().GetPers(id, "tout");
                 this.dpers = GestionBD.getInstance().GetPers(id, "debut");
@@ -74,5 +78,6 @@ namespace ProjetFinal
         public string Fpers { get => fpers; set => fpers = value; }
         public string Heure_d { get => heure_d; set => heure_d = value; }
         public int Nb_places { get => nb_places; set => nb_places = value; }
+        public string Logo { get => logo; set => logo = value; }
     }
 }
