@@ -329,5 +329,55 @@ namespace ProjetFinal
             return liste;
         }
 
+        public int ajoutTrajet( string trajett, string date, string type, string arretd, string heure_d, string arreto, string heure_o, string arreta, string heure_a)
+        {
+            int retour = 0;
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            if(trajett == "long"){
+                commande.CommandText = "INSERT INTO trajets (id_chauffeur, date, type, arretd, heure_d, arreto, heure_o, arreta, heure_a)  VALUES(@id_client, @date, @type_voiture , @arretd, @heure_d, @arreto, @heure_o, @arreta, @heure_a); ";
+
+                commande.Parameters.AddWithValue("@id_client", id_actuel);
+                commande.Parameters.AddWithValue("@date", date);
+                commande.Parameters.AddWithValue("@type_voiture", type);
+                commande.Parameters.AddWithValue("@arretd", arretd);
+                commande.Parameters.AddWithValue("@heure_d", heure_d);
+                commande.Parameters.AddWithValue("@arreto", arreto);
+                commande.Parameters.AddWithValue("@heure_o", heure_o);
+                commande.Parameters.AddWithValue("@arreta", arreta);
+                commande.Parameters.AddWithValue("@heure_a", heure_a);
+
+                con.Open();
+                commande.Prepare();
+                retour = commande.ExecuteNonQuery();
+
+                con.Close();
+            }
+            else if (trajett == "simple")
+            {
+                commande.CommandText = "INSERT INTO trajets (id_chauffeur, date, type, arretd, heure_d, arreta, heure_a)  VALUES(@id_client, @date, @type_voiture , @arretd, @heure_d, @arreta, @heure_a); ";
+
+                commande.Parameters.AddWithValue("@id_client", id_actuel);
+                commande.Parameters.AddWithValue("@date", date);
+                commande.Parameters.AddWithValue("@type_voiture", type);
+                commande.Parameters.AddWithValue("@arretd", arretd);
+                commande.Parameters.AddWithValue("@heure_d", heure_d);
+                commande.Parameters.AddWithValue("@arreta", arreta);
+                commande.Parameters.AddWithValue("@heure_a", heure_a);
+
+                con.Open();
+                commande.Prepare();
+                retour = commande.ExecuteNonQuery();
+
+                con.Close();
+            }
+
+
+
+
+            return retour;
+        }
+
     }
 }

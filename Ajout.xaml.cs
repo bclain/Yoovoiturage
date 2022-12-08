@@ -34,6 +34,7 @@ namespace ProjetFinal
             tbDepart.Text = "";
             tbArrive.Text = "";
             tbArret.Text = "";
+            tbDate.Text = "";
             arretsec.Visibility = Visibility.Collapsed;
         }
 
@@ -48,9 +49,12 @@ namespace ProjetFinal
             tbDepart.Text = "";
             tbArrive.Text = "";
             tbArret.Text ="";
+            tbDate.Text = "";
 
 
             int valid = 0;
+            int validT = 0 ;
+            String trajet = "simple";
 
             if (departTimePicker.SelectedTime.ToString().Equals("") || villed.SelectedIndex == -1)
             {
@@ -61,9 +65,18 @@ namespace ProjetFinal
                 valid += 1;
             }
 
+            if(dater.Date.ToString() == "")
+            {
+                tbDate.Text = "Veillez entrez une date";
+            }
+            else
+            {
+                valid += 1;
+            }
+
             if (arrivalTimePicker.SelectedTime.ToString().Equals("") || villea.SelectedIndex == -1)
             {
-                tbDepart.Text = "Veillez entrez toutes les informations du départ";
+                tbArrive.Text = "Veillez entrez toutes les informations du départ";
             }
             else
             {
@@ -71,43 +84,61 @@ namespace ProjetFinal
                 {
                     tbArrive.Text = "L'heure d'arrivée doit être après l'heure de départ";
                 }
-                else
+                else if (villed.SelectedItem.ToString() == villea.SelectedItem.ToString() || villed.SelectedItem.ToString() == villeo.SelectedItem.ToString())
                 {
+                    tbArrive.Text = "La ville de départ doit être différente des autres";
+                }
+                else{
+
                     valid += 1;
                 }
             }
 
-
-
-            if (arrivalTimePicker.SelectedTime < departTimePicker.SelectedTime)
-            {
-                tbArrive.Visibility = Visibility.Visible;
-            };
-
-            if(cb1.IsChecked == true) {
-
+            if (cb1.IsChecked == true) {
+                validT = 4;
+                trajet = "long";
                 if (optionTimePicker.SelectedTime.ToString().Equals("") || villeo.SelectedIndex == -1)
                 {
-                    tbDepart.Text = "Veillez entrez toutes les informations du départ";
+                    tbArret.Text = "Veillez entrez toutes les informations de l'arrêt";
                 }
                 else
                 {
-                    if (arrivalTimePicker.SelectedTime < departTimePicker.SelectedTime)
+                    if (!((arrivalTimePicker.SelectedTime > optionTimePicker.SelectedTime) && (optionTimePicker.SelectedTime > departTimePicker.SelectedTime)))
                     {
-                        tbArrive.Text = "L'heure d'arrivée doit être après l'heure de départ";
+                        tbArret.Text = "L'heure de l'arrêt doit être entre l'heure de départ et d'arrivée";
+                    }
+                    else if (villed.SelectedItem.ToString() == villeo.SelectedItem.ToString() || villeo.SelectedItem.ToString() == villea.SelectedItem.ToString())
+                    {
+                        tbArret.Text = "La ville d'arrêt doit être différente des autres";
                     }
                     else
                     {
+
                         valid += 1;
                     }
                 }
-
-                if (!((arrivalTimePicker.SelectedTime > optionTimePicker.SelectedTime) && (optionTimePicker.SelectedTime > departTimePicker.SelectedTime)))
-                {
-                    tbArret.Text = "L'heure de l'arrêt doit être entre l'heure de départ et d'arrivée";
-                };
+            }
+            else
+            {
+                validT = 3;
             }
 
+            if (valid == validT)
+            {
+                var date = dater.Date;
+                DateTime time = date.Value.DateTime;
+                var formatedtime = time.ToString("yyyy-MM-dd");
+                System.Diagnostics.Debug.WriteLine(formatedtime);
+                if (trajet == "long")
+                {
+                    GestionBD.getInstance().ajoutTrajet(trajet, formatedtime, type, villed.SelectedItem.ToString(), departTimePicker.SelectedTime.ToString(), villeo.SelectedItem.ToString(), optionTimePicker.SelectedTime.ToString(), villea.SelectedItem.ToString(), arrivalTimePicker.SelectedTime.ToString());
+                }
+                else if (trajet == "simple")
+                {
+                    GestionBD.getInstance().ajoutTrajet(trajet, formatedtime, type, villed.SelectedItem.ToString(), departTimePicker.SelectedTime.ToString(), "","", villea.SelectedItem.ToString(), arrivalTimePicker.SelectedTime.ToString());
+                }
+                Frame.Navigate(typeof(Compte));
+            }
         }
 
         private void HandleCheck(object sender, RoutedEventArgs e)
@@ -118,6 +149,7 @@ namespace ProjetFinal
         private void HandleUnchecked(object sender, RoutedEventArgs e)
         {
             arretsec.Visibility = Visibility.Collapsed;
+            tbArret.Text = "";
         }
 
         private void btnVUS_Click(object sender, RoutedEventArgs e)
